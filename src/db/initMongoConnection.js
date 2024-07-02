@@ -12,8 +12,6 @@ export const initMongoConnection = async () => {
 
     await mongoose.connect(
       `mongodb+srv://${user}:${pwd}@${url}/${db}?retryWrites=true&w=majority`, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
         ssl: true,
         tlsAllowInvalidCertificates: true, // временно для диагностики
       }
