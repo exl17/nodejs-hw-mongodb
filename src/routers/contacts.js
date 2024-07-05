@@ -9,7 +9,7 @@ import {
 } from '../controllers/contacts.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 import { validateBody } from '../middlewares/validateBody.js';
-import { createContactSchema } from '../validation/contacts.js';
+import { createContactSchema, patchContactSchema } from '../validation/contacts.js';
 
 const router = Router();
 
@@ -24,7 +24,7 @@ router.delete('/contacts/:contactId', ctrlWrapper(deleteContactController));
 router.put('/contacts/:contactId', ctrlWrapper(upsertContactController));
 router.patch(
   '/contacts/:contactId',
-  validateBody(createContactSchema),
+  validateBody(patchContactSchema), // Обновили схему валидации для PATCH запроса
   ctrlWrapper(patchContactController),
 );
 
